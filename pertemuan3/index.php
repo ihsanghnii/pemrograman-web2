@@ -1,4 +1,4 @@
-<?php require_once('vendor/dataa.php') ?>
+<?php require_once('vendor/data.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
