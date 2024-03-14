@@ -23,17 +23,4 @@ $domisili = [
     "Bekasi",
     "Lainnya"
 ];
-
-$kategori_skills = "";
-if ($skor_skills = 0 ) {
-    $kategori_skills = "Tidak memadai";
-} elseif($skor_skills >= 0 && $skor_skills <= 40) {
-    $kategori_skills = "kurang";
-} elseif($skor_skills >= 41 && $skor_skills <= 60) {
-    $kategori_skills = "cukup";
-} elseif($skor_skills >= 61 && $skor_skills <= 100) {
-    $kategori_skills = "baik";
-} elseif($skor_skills >= 101 && $skor_skills <= 150) {
-    $kategori_skills = "sangat baik";
-}
 ?>

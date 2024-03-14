@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Process</title>
+    <title>Form Registrasi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -23,14 +23,16 @@
             $myskills = $_POST['skills'];
             $domisili = $_POST['domisili'];
         ?>
-            <table class="table">
+            <table class="table table-hover table-striped">
+                <h1 class="text-center">Hasil Registrasi</h1>
+                <br>
                 <tr>
                     <td>NIM</td>
                     <td>:</td>
                     <td><?= $nim ?></td>
                 </tr>
                 <tr>
-                    <td>Nama lengkap</td>
+                    <td>Nama Lengkap</td>
                     <td>:</td>
                     <td><?= $nama ?></td>
                 </tr>
@@ -68,12 +70,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>point skill</td>
+                    <td>Point Skill</td>
                     <td>:</td>
                     <td><?= $point ?></td>
                 </tr>
                 <tr>
-                    <td>kategori skill</td>
+                    <td>Kategori Skill</td>
                     <td>:</td>
                     <td>
                         <?php
@@ -94,13 +96,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>domisili</td>
+                    <td>Domisili</td>
                     <td>:</td>
                     <td><?= $domisili ?></td>
                 </tr>
 
             </table>
         <?php } else { ?>
+            <h1>Form Registrasi</h1>
+            <br>
             <form method="post">
                 <div class="form-group row">
                     <label for="nim" class="col-4 col-form-label">NIM</label>
@@ -117,7 +121,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="nama" class="col-4 col-form-label">nama lengkap</label>
+                    <label for="nama" class="col-4 col-form-label">Nama Lengkap</label>
                     <div class="col-8">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -131,7 +135,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="email" class="col-4 col-form-label">email</label>
+                    <label for="email" class="col-4 col-form-label">Email</label>
                     <div class="col-8">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -145,17 +149,17 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="jeniskelamin" class="col-4 col-form-label">jenis kelamin</label>
+                    <label for="jeniskelamin" class="col-4 col-form-label">Jenis Kelamin</label>
                     <div class="col-8">
                         <input id="lakiLaki" name="jeniskelamin" placeholder="masukan jenis kelamin" type="radio" value="laki-laki" required>
-                        <label for="lakiLaki">laki-laki</label>
+                        <label for="lakiLaki">Laki-Laki</label><br>
                         <input id="perempuan" name="jeniskelamin" placeholder="masukan jenis kelamin" type="radio" value="laki-laki" required>
-                        <label for="perempuan">perempuan</label>
+                        <label for="perempuan">Perempuan</label>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="programStudi" class="col-4 col-form-label">Program studi</label>
+                    <label for="programStudi" class="col-4 col-form-label">Program Studi</label>
                     <div class="col-8">
                         <select id="programStudi" name="programStudi" class="form-control" required>
                             <option value="">~ pilih prodi ~</option>
@@ -167,7 +171,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="skills" class="col-4 col-form-label">Skill programming</label>
+                    <label for="skills" class="col-4 col-form-label">Skill Programming</label>
                     <div class="col-8">
                         <?php foreach ($skills as $skillkey => $skillvalue) { ?>
                             <input type="checkbox" name="skills[]" id="<?= $skillkey ?>" value="<?= $skillkey ?>">
@@ -177,7 +181,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="domisili" class="col-4 col-form-label">domisili</label>
+                    <label for="domisili" class="col-4 col-form-label">Domisili</label>
                     <div class="col-8">
                         <select id="domisili" name="domisili" class="form-control" required>
                             <option value="">~ pilih domisili ~</option>
