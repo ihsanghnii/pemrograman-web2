@@ -40,7 +40,7 @@
         <h3 class="text-center">Form Belanja Online</h3>
         <div class="row">
             <div class="col-md-12 m-4">
-                <form action="form_belanja.php" method="POST">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <div class="form-group row">
                         <label for="customer" class="col-4 col-form-label">Customer</label>
                         <div class="col-8">
