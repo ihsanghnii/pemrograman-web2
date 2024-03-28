@@ -1,5 +1,5 @@
 <?php require_once('assets/data.php') ?>
-
+<?php require_once('assets/hasil.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,24 +127,16 @@
             <div class="card_hasil p-3">
                 <?php
                 if (isset($_POST['submit'])) {
+                    $kalkulatorBMI = new kalkulatorBMI();
+
                     $nama = $_POST['nama'];
                     $jenisKelamin = $_POST['jenisKelamin'];
                     $umur = $_POST['umur'] . ' tahun';
                     $beratBadan = $_POST['beratBadan'] . ' kg';
                     $tinggiBadan = $_POST['tinggiBadan'] . ' cm';
 
-                    $tinggiBadanMeter = $tinggiBadan / 100;
-                    $bmi = $_POST['beratBadan'] / ($tinggiBadanMeter * $tinggiBadanMeter);
-
-                    if ($bmi < 18.5) {
-                        $keterangan = "Kekurangan Berat Badan";
-                    } elseif ($bmi >= 18.5 && $bmi <= 24.9) {
-                        $keterangan = "Normal (ideal)";
-                    } elseif ($bmi >= 25 && $bmi <= 29.9) {
-                        $keterangan = "Kelebihan Berat Badan";
-                    } else {
-                        $keterangan = " Kegemukan (obesitas)";
-                    }
+                    $bmi = $kalkulatorBMI->hitungBMI($_POST['beratBadan'], $_POST['tinggiBadan']);
+                    $keterangan = $kalkulatorBMI->keteranganBMI($bmi);
                 }
                 ?>
                 <table class="table table-striped table-hover">
