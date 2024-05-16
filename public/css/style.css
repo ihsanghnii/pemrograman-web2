@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    text-align: center;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+    width: 50%;
+    border: 2px solid #ccc;
+}
+
+th {
+    background-color:#778899;
+}
+
+td:hover {
+    background-color:#D3D3D3;
+    transform: scale(0.98);
+}
