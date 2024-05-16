@@ -39,21 +39,6 @@ class DashboardController extends Controller
         ]);
     }
 
-    // public function laporan()
-    // {
-    //     $item = [
-    //         'title' => 'Laporan Program Studi',
-    //         'tahun' => 2024,
-    //         'data_mhs' => [
-    //             ["prodi" => "SI", "jumlah" => 1020],
-    //             ["prodi" => "TI", "jumlah" => 1215],
-    //             ["prodi" => "BD", "jumlah" => 62]
-    //         ]
-    //     ];
-
-    //     return view('dashboard.laporan', $item);
-    // }
-
     /**
      * Show the form for creating a new resource.
      */
