@@ -1,2 +1,2 @@
 # pemrograman-web2
-Sebuah repository untuk mengumpulkan
+Sebuah repository untuk mengumpulkan tugas
