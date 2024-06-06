@@ -13,12 +13,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>PEGAWAI</h1>
+                        <h1>Pegawai</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">EMPLOYEES</li>
+                            <li class="breadcrumb-item active">Eemployees</li>
                         </ol>
                     </div>
                 </div>
@@ -36,6 +36,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <a href="{{ route('employees.create') }}" class="btn btn-primary btn-sm">Tambah</a>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -57,9 +58,13 @@
                                                 <td>{{ $employee->nohp }}</td>
                                                 <td>{{ $employee->email }}</td>
                                                 <td>{{ $employee->position->nama}}</td>
-                                                <td>
-                                                    <a href="">edit</a>
-                                                    <a href="">Hapus</a>
+                                                <td class="d-flex">
+                                                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning btn-sm">edit</a>
+                                                    <form method="post" action="{{ route('employees.delete', $employee->id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button onclick="if(!confirm('Yakin untuk dihapus?')) {return false}" type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

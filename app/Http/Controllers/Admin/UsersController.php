@@ -17,4 +17,50 @@ class UsersController extends Controller
 
         return view('admin.users.index', compact('users'));
     }
+
+    public function create()
+    {
+        return view('admin.users.create');;
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        $data = $request->validate([
+            "nama" => 'required',
+            "password" => 'required|min:6',
+            "email" => 'required|email|unique:users,email'
+        ]);
+
+        if (isset($request->id)) {
+            #update
+            $user = User::find($request->id);
+            $user->update([
+                "nama" => $request->nama,
+                "password" => $request->password,
+                "email" => $request->email
+            ]);
+        } else {
+            user::create($data);
+        }
+
+        return redirect()->route('users.index');
+    }
+
+    public function delete(string $id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('users.index');
+    }
+
+    public function edit(string $id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->back();
+        }
+        return view('admin.users.edit', compact('user'));
+    }
 }

@@ -16,4 +16,37 @@ class MembersController extends Controller
     
         return view('admin.members.index', compact('members'));
     }
+
+    public function create()
+    {
+        return view('admin.members.create');;
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        $data = $request->validate([
+            "nama" => 'required',
+            "email" => 'required',
+            "status" => 'required',
+            "alamat" => 'required',
+            "gender" => 'required'
+        ]);
+
+        if (isset($request->id)) {
+            #update
+            $member = Member::find($request->id);
+            $member->update([
+                "nama" => $request->nama,
+                "email" => $request->email,
+                "status" => $request->status,
+                "alamat" => $request->alamat,
+                "gender" => $request->gender
+            ]);
+        } else {
+            Member::create($data);
+        }
+
+        return redirect()->route('members.index');
+    }
 }

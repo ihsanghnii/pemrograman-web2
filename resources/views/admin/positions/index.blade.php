@@ -13,12 +13,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>POSITIONS</h1>
+                        <h1>Positions</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">POSITIONS</li>
+                            <li class="breadcrumb-item active">Positions</li>
                         </ol>
                     </div>
                 </div>
@@ -36,6 +36,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <a href="{{ route('position.create') }}" class="btn btn-primary btn-sm">Tambah</a>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -49,9 +50,13 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $position->nama }}</td>
-                                                <td>
-                                                    <a href="">edit</a>
-                                                    <a href="">Hapus</a>
+                                                <td class="d-flex">
+                                                    <a href="{{ route('position.edit', $position->id) }}" class="btn btn-warning btn-sm">edit</a>
+                                                    <form method="post" action="{{ route('position.delete', $position->id) }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button onclick="if(!confirm('yakin dihapus nih?')) {return false}" type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
