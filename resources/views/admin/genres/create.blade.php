@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Tambah Jabatan</h1>
+                        <h1>Tambah Genre Buku</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Tambah Jabatan</li>
+                            <li class="breadcrumb-item active">Tambah Genre Buku</li>
                         </ol>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
 
-                                <a href="{{ route('position.index') }}" class="btn btn-success btn-sm">Kembali</a>
+                                <a href="{{ route('genres.index') }}" class="btn btn-success btn-sm">Kembali</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -46,10 +46,10 @@
                                     @endif
                                 </div>
 
-                                <form action="{{ route('position.store') }}" method="POST">
+                                <form action="{{ route('genres.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group row">
-                                        <label for="nama" class="col-md-4">Nama Jabatan</label>
+                                        <label for="nama" class="col-md-4">Nama Genre</label>
                                         <input type="text" name="nama" value="{{ old('nama') }}" id="nama" class="form-control col-md-8"
                                             required>
                                     </div>

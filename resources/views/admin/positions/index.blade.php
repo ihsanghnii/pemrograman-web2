@@ -41,7 +41,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Posisi</th>
+                                            <th>Nama Jabatn</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>

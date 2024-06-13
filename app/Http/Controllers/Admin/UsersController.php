@@ -27,21 +27,21 @@ class UsersController extends Controller
     {
         // dd($request);
         $data = $request->validate([
-            "nama" => 'required',
-            "password" => 'required|min:6',
-            "email" => 'required|email|unique:users,email'
+            "name" => 'required',
+            "email" => 'required',
+            "password" => 'required'
         ]);
 
         if (isset($request->id)) {
             #update
             $user = User::find($request->id);
             $user->update([
-                "nama" => $request->nama,
-                "password" => $request->password,
-                "email" => $request->email
+                "name" => $request->name,
+                "email" => $request->email,
+                "password" => $request->password
             ]);
         } else {
-            user::create($data);
+            User::create($data);
         }
 
         return redirect()->route('users.index');

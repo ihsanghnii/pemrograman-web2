@@ -28,9 +28,9 @@ class MembersController extends Controller
         $data = $request->validate([
             "nama" => 'required',
             "email" => 'required',
-            "status" => 'required',
+            "status" => 'required|in:aktif,tidak aktif',
             "alamat" => 'required',
-            "gender" => 'required'
+            "gender" => 'required|in:laki-laki,perempuan'
         ]);
 
         if (isset($request->id)) {
@@ -46,6 +46,23 @@ class MembersController extends Controller
         } else {
             Member::create($data);
         }
+
+        return redirect()->route('members.index');
+    }
+
+    public function edit(string $id)
+    {
+        $member = Member::find($id);
+        if (!$member) {
+            return redirect()->back();
+        }
+        return view('admin.members.edit', compact('member'));
+    }
+
+    public function delete(string $id)
+    {
+        $member = Member::find($id);
+        $member->delete();
 
         return redirect()->route('members.index');
     }

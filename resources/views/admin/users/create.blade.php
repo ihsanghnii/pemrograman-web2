@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Tambah Jabatan</h1>
+                        <h1>Tambah User</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Tambah Jabatan</li>
+                            <li class="breadcrumb-item active">Tambah User</li>
                         </ol>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
 
-                                <a href="{{ route('position.index') }}" class="btn btn-success btn-sm">Kembali</a>
+                                <a href="{{ route('users.index') }}" class="btn btn-success btn-sm">Kembali</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -46,13 +46,26 @@
                                     @endif
                                 </div>
 
-                                <form action="{{ route('position.store') }}" method="POST">
+                                <form action="{{ route('users.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group row">
-                                        <label for="nama" class="col-md-4">Nama Jabatan</label>
-                                        <input type="text" name="nama" value="{{ old('nama') }}" id="nama" class="form-control col-md-8"
+                                        <label for="name" class="col-md-4">Nama</label>
+                                        <input type="text" name="name" value="{{ old('name') }}" id="name" class="form-control col-md-8"
                                             required>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <label for="email" class="col-md-4">Email</label>
+                                        <input type="email" name="email" value="{{ old('email') }}" id="email" class="form-control col-md-8"
+                                            required>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="password" class="col-md-4">Password</label>
+                                        <input type="password" name="password" value="{{ old('password') }}" id="password" class="form-control col-md-8"
+                                            required>
+                                    </div>
+
                                     <div class="d-flex justify-content-center">
                                         <input type="submit" value="tambah" class="btn btn-primary">
                                     </div>

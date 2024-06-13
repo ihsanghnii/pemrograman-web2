@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Jabatan</h1>
+                        <h1>Edit Pegawai</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Jabatan</li>
+                            <li class="breadcrumb-item active">Edit Pegawai</li>
                         </ol>
                     </div>
                 </div>
@@ -35,10 +35,8 @@
                             <!-- /.card-header -->
                             <div class="card-body">
 
-
-                                <form action="{{ route('employees.update', $employee->id) }}" method="POST">
+                                <form action="{{ route('employees.store', $employee->id) }}" method="POST">
                                     @csrf
-                                    @method('PUT')
                                     <div class="form-group row">
                                         <label for="nama" class="col-md-4">Nama</label>
                                         <input type="hidden" name="id" value="{{ $employee->id }}">
@@ -76,7 +74,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <input type="submit" value="edit" class="btn btn-primary">
+                                        <input type="submit" value="Simpan" class="btn btn-primary">
                                     </div>
                                 </form>
                             </div>

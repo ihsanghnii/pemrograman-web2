@@ -58,7 +58,6 @@ Route::prefix('/admin')->group(function () {
     Route::post('/employees/store', [ADMIN\EmployeesController::class, "store"])->name('employees.store');
     Route::delete('/employees/delete/{id}', [ADMIN\EmployeesController::class, "delete"])->name('employees.delete');
     Route::get('/employees/edit/{id}', [ADMIN\EmployeesController::class, "edit"])->name('employees.edit');
-    Route::put('/employees/update/{id}', [ADMIN\EmployeesController::class, "update"])->name('employees.update');
 
     Route::get('/users', [ADMIN\UsersController::class, "index"])->name('users.index');
     Route::get('/users/create', [ADMIN\UsersController::class, "create"])->name('users.create');
@@ -83,5 +82,4 @@ Route::prefix('/admin')->group(function () {
     Route::post('/books/store', [ADMIN\BooksController::class, "store"])->name('books.store');
     Route::delete('/books/delete/{id}', [ADMIN\BooksController::class, "delete"])->name('books.delete');
     Route::get('/books/edit/{id}', [ADMIN\BooksController::class, "edit"])->name('books.edit'); 
-    Route::put('/employees/update/{id}', [ADMIN\BooksController::class, "update"])->name('books.update');   
 });

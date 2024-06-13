@@ -10,64 +10,63 @@ use Illuminate\Support\Facades\DB;
 
 class EmployeesController extends Controller
 {
-    public function index() 
+    public function index()
     {
-        // $employees = DB::select('SELECT * FROM employees');
-        $employees = Employee::all();
+        // Mengambil semua employee beserta posisinya
         $employees = Employee::with('position')->get();
-        // dd($employees);
-
+        
         return view('admin.employees.index', compact('employees'));
     }
 
     public function create()
     {
-        return view('admin.employees.create');;
+        // Mengambil semua posisi untuk ditampilkan di form create
+        $positions = Position::all();
+        return view('admin.employees.create', compact('positions'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'nohp' => 'required',
-            'email' => 'required|email|unique:employees',
-            'position_id' => 'required|exists:positions,id'
+        // Validasi data
+        $data = $request->validate([
+            "nama" => 'required',
+            "alamat" => 'required',
+            "nohp" => 'required',
+            "email" => 'required|email',
+            "positions_id" => 'required|exists:positions,id'
         ]);
 
-        Employee::create($request->all());
+        // Jika request memiliki ID, lakukan update
+        if ($request->has('id')) {
+            $employee = Employee::find($request->id);
+            if ($employee) {
+                $employee->update($data);
+            }
+        } else {
+            // Jika tidak ada ID, lakukan create
+            Employee::create($data);
+        }
 
-        return redirect()->route('employees.create')->alert('sukses! data berhasil diedit ');
-    }
-
-    public function delete(string $id)
-    {
-        $employees = Employee::find($id);
-        $employees->delete();
-
+        // Redirect ke halaman index employee
         return redirect()->route('employees.index');
     }
 
     public function edit(string $id)
-    {
-        $employee = Employee::find($id);
-        $positions = Position::all();
-        return view('admin.employees.edit', compact('employee', 'positions'));
+{
+    $employee = Employee::find($id);
+    if (!$employee) {
+        return redirect()->route('admin.employees.index')->with('error', 'Employee not found');
     }
+    
+    $positions = Position::all();
+    return view('admin.employees.edit', compact('employee', 'positions'));
+}
 
-    public function update(Request $request, $id)
+    public function delete(string $id)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'alamat' => 'required',
-            'email' => 'required|email|unique:employees,email,'.$id,
-            'nohp' => 'required|string|max:15',
-            'positions_id' => 'required|exists:positions,id',
-        ]);
-
         $employee = Employee::find($id);
-        $employee->update($request->all());
+        $employee->delete();
 
-        return redirect()->route('employees.index')->with('success', 'Employee berhasil diperbarui');
+        return redirect()->route('employees.index');
     }
 }

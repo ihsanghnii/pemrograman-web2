@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Jabatan</h1>
+                        <h1>Edit Buku</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Jabatan</li>
+                            <li class="breadcrumb-item active">Edit Buku</li>
                         </ol>
                     </div>
                 </div>
@@ -35,48 +35,62 @@
                             <!-- /.card-header -->
                             <div class="card-body">
 
-
-                                <form action="{{ route('books.update', $book->id) }}" method="POST">
+                                <div class="alert alert-danger">
+                                    @if (count($errors) > 0)
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                                <form action="{{ route('books.store', $book->id) }}" method="POST">
                                     @csrf
-                                    @method('PUT')
                                     <div class="form-group row">
-                                        <label for="nama" class="col-md-4">Judul</label>
+                                        <label for="title" class="col-md-4">Judul Buku</label>
                                         <input type="hidden" name="id" value="{{ $book->id }}">
-                                        <input type="text" value="{{ $book->title }}" name="nama" id="nama"
+                                        <input type="text" value="{{ $book->title }}" name="title" id="title"
                                             class="form-control col-md-8" required>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="isbn" class="col-md-4">ISBN</label>
                                         <input type="hidden" name="id" value="{{ $book->id }}">
-                                        <input type="number" value="{{ $book->isbn }}" name="isbn" id="isbn" class="form-control col-md-8" required>
+                                        <input type="number" value="{{ $book->isbn }}" name="isbn" id="isbn"
+                                            class="form-control col-md-8" required>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="deskripsi" class="col-md-4">deskripsi</label>
+                                        <label for="deskripsi" class="col-md-4">Deskripsi Buku</label>
                                         <input type="hidden" name="id" value="{{ $book->id }}">
                                         <input type="text" value="{{ $book->deskripsi }}" name="deskripsi" id="deskripsi"
                                             class="form-control col-md-8" required>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="penulis" class="col-md-4">penulis</label>
+                                        <label for="penulis" class="col-md-4">Penulis Buku</label>
                                         <input type="hidden" name="id" value="{{ $book->id }}">
                                         <input type="text" value="{{ $book->penulis }}" name="penulis" id="penulis"
                                             class="form-control col-md-8" required>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="penerbit" class="col-md-4">penerbit</label>
+                                        <label for="penerbit" class="col-md-4">Penerbit Buku</label>
                                         <input type="hidden" name="id" value="{{ $book->id }}">
                                         <input type="text" value="{{ $book->penerbit }}" name="penerbit" id="penerbit"
                                             class="form-control col-md-8" required>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="genres_id" class="col-md-4">Genre</label>
-                                        <select name="genres_id" id="genres_id" class="form-control col-md-8"
-                                            required>
+                                        <label for="cover_img" class="col-md-4">Cover Buku</label>
+                                        <input type="hidden" name="id" value="{{ $book->id }}">
+                                        <input type="file" value="{{ $book->cover_img }}" name="cover_img"
+                                            id="cover_img" required>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="genres_id" class="col-md-4">Genre Buku</label>
+                                        <select name="genres_id" id="genres_id" class="form-control col-md-8" required>
                                             @foreach ($genres as $genre)
                                                 <option value="{{ $genre->id }}"
                                                     {{ $book->genres_id == $genre->id ? 'selected' : '' }}>
@@ -86,7 +100,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <input type="submit" value="edit" class="btn btn-primary">
+                                        <input type="submit" value="Simpan" class="btn btn-primary">
                                     </div>
                                 </form>
                             </div>

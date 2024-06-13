@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Tambah Pegawai</h1>
+                        <h1>Tambah Buku</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Tambah Pegawai</li>
+                            <li class="breadcrumb-item active">Tambah buku</li>
                         </ol>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
 
-                                <a href="{{ route('employees.index') }}" class="btn btn-success btn-sm">Kembali</a>
+                                <a href="{{ route('books.index') }}" class="btn btn-success btn-sm">Kembali</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -44,37 +44,49 @@
                                         </ul>
                                     @endif
                                 </div>
-                                <form action="{{ route('employees.store') }}" method="POST">
+                                <form action="{{ route('books.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group row">
-                                        <label for="nama" class="col-md-4">Nama</label>
-                                        <input type="text" name="nama" value="{{ old('nama') }}" id="nama" class="form-control col-md-8"
+                                        <label for="title" class="col-md-4">Judul Buku</label>
+                                        <input type="text" name="title" value="{{ old('title') }}" id="title" class="form-control col-md-8"
                                             required>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="alamat" class="col-md-4">Alamat</label>
-                                        <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control col-md-8" required></textarea>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="nohp" class="col-md-4">No HP</label>
-                                        <input type="number" name="nohp" id="nohp" class="form-control col-md-8"
+                                        <label for="isbn" class="col-md-4">ISBN</label>
+                                        <input type="number" name="isbn" value="{{ old('isbn') }}" id="isbn" class="form-control col-md-8"
                                             required>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="email" class="col-md-4">Email</label>
-                                        <input type="email" name="email" id="email" class="form-control col-md-8"
+                                        <label for="deskripsi" class="col-md-4">Deskripsi Buku</label>
+                                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control col-md-8" value="{{ old('deskripsi') }}" required></textarea>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="penulis" class="col-md-4">Penulis Buku</label>
+                                        <input type="text" name="penulis" value="{{ old('penulis') }}" id="penulis" class="form-control col-md-8"
                                             required>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="positions_id" class="col-md-4">Posisi</label>
-                                        <select name="positions_id" id="positions_id" class="form-control col-md-8"
+                                        <label for="penerbit" class="col-md-4">Penerbit Buku</label>
+                                        <input type="text" name="penerbit" value="{{ old('penerbit') }}" id="penerbit" class="form-control col-md-8"
                                             required>
-                                            @foreach ($positions as $position)
-                                                <option value="{{ $position->id }}">{{ $position->nama }}</option>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="cover_img" class="col-md-4">Cover Buku</label>
+                                        <input type="file" name="cover_img" value="{{ old('cover_img') }}" id="cover_img"
+                                            required>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="genres_id" class="col-md-4">Genre Buku</label>
+                                        <select name="genres_id" id="genres_id" class="form-control col-md-8"
+                                            required>
+                                            @foreach ($genres as $genre)
+                                                <option value="{{ $genre->id }}">{{ $genre->nama }}</option>
                                             @endforeach
                                         </select>
                                     </div>

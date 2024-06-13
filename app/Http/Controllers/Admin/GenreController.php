@@ -40,7 +40,7 @@ class GenreController extends Controller
             genre::create($data);
         }
 
-        return redirect()->route('genre.index');
+        return redirect()->route('genres.index');
     }
 
     public function delete(string $id)
@@ -48,7 +48,7 @@ class GenreController extends Controller
         $genre = Genre::find($id);
         $genre->delete();
 
-        return redirect()->route('genre.index');
+        return redirect()->route('genres.index');
     }
 
     public function edit(string $id)

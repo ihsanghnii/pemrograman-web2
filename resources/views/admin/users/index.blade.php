@@ -36,7 +36,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <a href="{{ route('position.create') }}" class="btn btn-primary btn-sm">Tambah</a>
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">Tambah</a>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>

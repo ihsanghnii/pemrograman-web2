@@ -16,12 +16,7 @@ class BookSeeder extends Seeder
         Book::create([
             "title" => "Supernova: Ksatria, Puteri, dan Bintang Jatuh",
             "isbn" => "978-979-96257-1-3",
-            "deskripsi" => "Supernova: Ksatria, Puteri, 
-                            dan Bintang Jatuh adalah novel fiksi ilmiah yang ditulis oleh Dewi Lestari, 
-                            lebih dikenal sebagai Dee. Buku ini merupakan seri pertama dari serial Supernova.
-                            Ceritanya menggabungkan elemen sains, spiritualitas, dan romansa, 
-                            serta mengisahkan tentang sepasang sahabat yang mencoba menulis cerita yang 
-                            sempurna sambil menjelajahi makna kehidupan dan hubungan antarmanusia.",
+            "deskripsi" => "Supernova: Ksatria, Puteri, dan Bintang Jatuh adalah novel fiksi ilmiah yang ditulis oleh Dewi Lestari, lebih dikenal sebagai Dee. Buku ini merupakan seri pertama dari serial Supernova.Ceritanya menggabungkan elemen sains, spiritualitas, dan romansa, serta mengisahkan tentang sepasang sahabat yang mencoba menulis cerita yang sempurna sambil menjelajahi makna kehidupan dan hubungan antarmanusia.",
             "penulis" => "Dewi Lestari (Dee)",
             "penerbit" => "Truedee Books",
             "cover_img" => "",
