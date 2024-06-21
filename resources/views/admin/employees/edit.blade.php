@@ -51,7 +51,7 @@
 
                                     <div class="form-group row">
                                         <label for="nohp" class="col-md-4">Nomor HP</label>
-                                        <input type="text" value="{{ $employee->nohp }}" name="nohp" id="nohp"
+                                        <input type="number" value="{{ $employee->nohp }}" name="nohp" id="nohp"
                                             class="form-control col-md-8" required>
                                     </div>
 
